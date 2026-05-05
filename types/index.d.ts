@@ -17,8 +17,8 @@ type InputFieldProps = {
 };
 
 type FormState = {
-  firstName: string;
-  lastName: string;
+  firstName?: string;
+  lastName?: string;
   email: string;
   password: string;
   code: string;
@@ -56,4 +56,5 @@ type SignUpProps = {
   onSubmit: () => void;
   loading: boolean;
   errors: any; 
+  isSignIn?: boolean;
 };

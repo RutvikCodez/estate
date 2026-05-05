@@ -3,22 +3,22 @@ import { InputField } from "./InputField";
 import { Button } from "./Button";
 import { Link } from "expo-router";
 
-export const SignUpUI = ({ form, update, onSubmit, loading, errors }: SignUpProps) => (
+export const SignUpUI = ({ form, update, onSubmit, loading, errors, isSignIn }: SignUpProps) => (
   <View className="gap-4">
-    <View className="flex-row gap-3">
+    {!isSignIn && <View className="flex-row gap-3">
       <InputField
         placeholder="First name"
-        value={form.firstName}
+        value={form.firstName!}
         onChangeText={update("firstName")}
         containerClassName="flex-1"
       />
       <InputField
         placeholder="Last name"
-        value={form.lastName}
+        value={form.lastName!}
         onChangeText={update("lastName")}
         containerClassName="flex-1"
       />
-    </View>
+    </View>}
 
     <InputField
       placeholder="Email Address"
@@ -35,12 +35,12 @@ export const SignUpUI = ({ form, update, onSubmit, loading, errors }: SignUpProp
       error={errors?.fields?.password?.message}
     />
 
-    <Button text="Sign Up" onPress={onSubmit} loading={loading} />
+    <Button text={isSignIn ? "Sign In" : "Sign Up"} onPress={onSubmit} loading={loading} />
 
     <View className="flex-row justify-center">
-      <Text className="text-gray-500">Already have an account? </Text>
-      <Link href="/sign-in">
-        <Text className="text-blue-600 font-semibold">Sign In</Text>
+      <Text className="text-gray-500">{isSignIn ? "Don't have an account?" : "Already have an account?"}</Text>
+      <Link href={isSignIn ? "/sign-up" : "/sign-in"}>
+        <Text className="text-blue-600 font-semibold">{isSignIn ? " Sign Up" : " Sign In"}</Text>
       </Link>
     </View>
 

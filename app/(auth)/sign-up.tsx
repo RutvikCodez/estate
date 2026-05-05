@@ -9,14 +9,6 @@ import { Header } from "@/components/Header";
 import { VerifyUI } from "@/components/VerifyUI";
 import { SignUpUI } from "@/components/SignUpUI";
 
-type FormState = {
-  firstName: string;
-  lastName: string;
-  email: string;
-  password: string;
-  code: string;
-};
-
 export default function SignUp() {
   const { signUp, errors, fetchStatus } = useSignUp();
   const { isSignedIn } = useAuth();
