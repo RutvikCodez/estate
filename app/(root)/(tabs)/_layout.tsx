@@ -14,6 +14,7 @@ export default function TabLayout() {
             tabBarIcon: ({ color, size }) => (
               <Ionicons name={screen.icon} size={size} color={color} />
             ),
+            headerShown: false,
           }}
         />
       ))}
