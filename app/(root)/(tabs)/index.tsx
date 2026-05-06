@@ -53,8 +53,8 @@ export default function HomeScreen() {
         contentContainerStyle={{ paddingBottom: 100 }}
         showsVerticalScrollIndicator={false}
         ListHeaderComponent={
-          <View>
-            <View className="flex-row items-center justify-between px-5 pt-4 pb-5">
+          <View className="flex-col gap-5 px-5">
+            <View className="flex-row items-center justify-between">
               <Image
                 source={require("../../../assets/images/kribb.png")}
                 style={{ width: 90, height: 36 }}
@@ -70,7 +70,7 @@ export default function HomeScreen() {
 
             <TouchableOpacity
               onPress={() => router.push("/(root)/(tabs)/search")}
-              className="mx-5 mb-6 flex-row items-center bg-white rounded-2xl px-4 py-3 gap-3"
+              className="flex-row items-center bg-white rounded-2xl px-4 py-3 gap-3"
               style={{
                 shadowColor: "#000",
                 shadowOpacity: 0.06,
@@ -87,14 +87,14 @@ export default function HomeScreen() {
                 onPress={() =>
                   router.push("/(root)/(tabs)/search?openFilters=true")
                 }
-                className="w-8 h-8 bg-blue-600 rounded-xl items-center justify-center"
+                className="p-2 bg-blue-600 rounded-xl items-center justify-center"
               >
                 <Ionicons name="options-outline" size={15} color={"white"} />
               </TouchableOpacity>
             </TouchableOpacity>
 
-            <View className="mb-6">
-              <Text className="text-gray-900 text-lg font-bold px-5 mb-4">
+            <View className="flex-col gap-4">
+              <Text className="text-gray-900 text-lg font-bold">
                 Featured
               </Text>
               {loading ? (
@@ -108,7 +108,7 @@ export default function HomeScreen() {
                   data={featured}
                   keyExtractor={(item) => item.id}
                   renderItem={({ item }) => (
-                    <View className="px-5">
+                    <View>
                       <Text>{item.title}</Text>
                     </View>
                   )}
