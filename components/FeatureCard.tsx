@@ -1,5 +1,6 @@
 import { formatPrice } from "@/lib/utils";
 import { Ionicons } from "@expo/vector-icons";
+import { useRouter } from "expo-router";
 import { Image, Text, TouchableOpacity, View } from "react-native";
 
 export default function FeatureCard({
@@ -23,8 +24,10 @@ export default function FeatureCard({
       value: bathrooms,
     },
   ];
+  const router = useRouter();
   return (
     <TouchableOpacity
+      onPress={() => router.push(`/(root)/property/${property.id}`)}
       className="bg-white rounded-3xl overflow-hidden w-72"
       style={{
         shadowColor: "#000",
