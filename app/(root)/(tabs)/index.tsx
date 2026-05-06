@@ -12,6 +12,7 @@ import { useUser } from "@clerk/expo";
 import { useFocusEffect, useRouter } from "expo-router";
 import { supabase } from "@/lib/supabase";
 import { Ionicons } from "@expo/vector-icons";
+import FeatureCard from "@/components/FeatureCard";
 
 export default function HomeScreen() {
   const { user } = useUser();
@@ -94,9 +95,7 @@ export default function HomeScreen() {
             </TouchableOpacity>
 
             <View className="flex-col gap-4">
-              <Text className="text-gray-900 text-lg font-bold">
-                Featured
-              </Text>
+              <Text className="text-gray-900 text-lg font-bold">Featured</Text>
               {loading ? (
                 <ActivityIndicator
                   size={"small"}
@@ -107,14 +106,9 @@ export default function HomeScreen() {
                 <FlatList
                   data={featured}
                   keyExtractor={(item) => item.id}
-                  renderItem={({ item }) => (
-                    <View>
-                      <Text>{item.title}</Text>
-                    </View>
-                  )}
+                  renderItem={({ item }) => <FeatureCard {...item} />}
                   horizontal
                   showsHorizontalScrollIndicator={false}
-                  contentContainerStyle={{ paddingHorizontal: 20 }}
                 />
               )}
             </View>
