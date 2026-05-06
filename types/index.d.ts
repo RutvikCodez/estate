@@ -58,3 +58,8 @@ type SignUpProps = {
   errors: any; 
   isSignIn?: boolean;
 };
+
+type UserStore = {
+  isAdmin: boolean;
+  setIsAdmin: (isAdmin: boolean) => void;
+}
