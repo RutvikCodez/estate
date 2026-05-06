@@ -109,6 +109,7 @@ export default function HomeScreen() {
                   renderItem={({ item }) => <FeatureCard {...item} />}
                   horizontal
                   showsHorizontalScrollIndicator={false}
+                  contentContainerClassName="flex-row gap-4"
                 />
               )}
             </View>

@@ -4,25 +4,28 @@ import { Image, Text, TouchableOpacity, View } from "react-native";
 
 export default function FeatureCard({
   address,
-  area_sqft,
   bathrooms,
   bedrooms,
   city,
-  created_at,
-  description,
-  id,
   images,
-  is_featured,
   is_sold,
-  latitude,
-  longitude,
   price,
   title,
   type,
 }: Property) {
+  const iconsData = [
+    {
+      name: "bed-outline",
+      value: bedrooms,
+    },
+    {
+      name: "water-outline",
+      value: bathrooms,
+    },
+  ];
   return (
     <TouchableOpacity
-      className="bg-white rounded-3xl overflow-hidden mr-4"
+      className="bg-white rounded-3xl overflow-hidden w-72"
       style={{
         shadowColor: "#000",
         shadowOffset: { width: 0, height: 2 },
@@ -43,32 +46,33 @@ export default function FeatureCard({
           <Text className="text-white text-xs font-semibold">Sold</Text>
         </View>
       )}
-      <View className="p-4">
-        <Text
-          className="text-base font-bold text-gray-800 mb-1"
-          numberOfLines={1}
-        >
-          {title}
-        </Text>
-        <View className="flex-row items-center gap-1 mb-3">
-          <Ionicons name="location-outline" size={13} color={"#6B7280"} />
-          <Text className="text-xs text-gray-500" numberOfLines={1}>
-            {address}, {city}
+      <View className="p-4 flex-col gap-1">
+        <View className=" flex-col gap-3">
+          <Text className="text-base font-bold text-gray-800" numberOfLines={1}>
+            {title}
           </Text>
+          <View className="flex-row items-center gap-1">
+            <Ionicons name="location-outline" size={13} color={"#6B7280"} />
+            <Text className="text-xs text-gray-500" numberOfLines={1}>
+              {address}, {city}
+            </Text>
+          </View>
         </View>
         <View className="flex-row items-center justify-between">
           <Text className="text-blue-600 font-bold text-base">
             {formatPrice(price)}
           </Text>
           <View className="flex-row items-center gap-3">
-            <View className="flex-row items-center gap-1">
-                <Ionicons name="bed-outline" size={13} color={"#6B7280"} />
-                <Text className="text-xs text-gray-500">{bedrooms}</Text>
-            </View>
-            <View className="flex-row items-center gap-1">
-                <Ionicons name="water-outline" size={13} color={"#6B7280"} />
-                <Text className="text-xs text-gray-500">{bathrooms}</Text>
-            </View>
+            {iconsData.map(({ name, value }, index) => (
+              <View key={index} className="flex-row items-center gap-1">
+                <Ionicons
+                  name={name as React.ComponentProps<typeof Ionicons>["name"]}
+                  size={13}
+                  color={"#6B7280"}
+                />
+                <Text className="text-xs text-gray-500">{value}</Text>
+              </View>
+            ))}
           </View>
         </View>
       </View>

@@ -4,3 +4,4 @@ export const screens: TabType[] = [
   { name: "saved", title: "Saved", icon: "heart" },
   { name: "profile", title: "Profile", icon: "person" },
 ];
+
