@@ -82,3 +82,9 @@ type Property = {
   is_sold: boolean;
   created_at: string;
 }
+
+type PropertyCardProps = {
+  property: Property;
+  showSave?: boolean;
+  onUnsave?: () => void;
+}

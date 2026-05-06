@@ -13,6 +13,7 @@ import { useFocusEffect, useRouter } from "expo-router";
 import { supabase } from "@/lib/supabase";
 import { Ionicons } from "@expo/vector-icons";
 import FeatureCard from "@/components/FeatureCard";
+import PropertyCard from "@/components/PropertyCard";
 
 export default function HomeScreen() {
   const { user } = useUser();
@@ -54,7 +55,7 @@ export default function HomeScreen() {
         contentContainerStyle={{ paddingBottom: 100 }}
         showsVerticalScrollIndicator={false}
         ListHeaderComponent={
-          <View className="flex-col gap-5 px-5">
+          <View className="flex-col gap-5">
             <View className="flex-row items-center justify-between">
               <Image
                 source={require("../../../assets/images/kribb.png")}
@@ -114,16 +115,13 @@ export default function HomeScreen() {
               )}
             </View>
 
-            <Text className="text-gray-900 text-lg font-bold px-5 mb-4">
+            <Text className="text-gray-900 text-lg font-bold mb-4">
               Recommended
             </Text>
           </View>
         }
-        renderItem={({ item }) => (
-          <View className="px-5">
-            <Text>{item.title}</Text>
-          </View>
-        )}
+        renderItem={({ item }) => <PropertyCard property={item} />}
+        contentContainerClassName="flex-col gap-4 px-5"
         ListEmptyComponent={
           !loading ? (
             <View className="items-center py-10">
